@@ -13,6 +13,10 @@ export default function index(){
         )}
       <Text>Hello Guys</Text>
       <Text>Hello world</Text>
+
+      <Text>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis mollitia ea, aliquam ex, perferendis repudiandae aperiam, nobis iusto unde perspiciatis debitis minima. Voluptatibus iusto aliquid quia mollitia sequi odio architecto.</Text>
+
+      <Text>This is for testing</Text>
     </SafeAreaView>
   )
 }
