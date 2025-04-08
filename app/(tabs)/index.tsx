@@ -11,7 +11,7 @@ export default function index(){
             <title>SnapGrid</title>
           </Helmet>
         )}
-      <Text>Hello world, this is a front page</Text>
+      <Text>Hello Guys</Text>
     </SafeAreaView>
   )
 }
