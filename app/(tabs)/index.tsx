@@ -2,6 +2,8 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text, Platform } from "react-native";
 import Helmet from "react-helmet";
+import ButtonComponents from "./Components/button_components";
+import InputComponents from "./Components/input_components"
 
 export default function index(){
   return (
@@ -11,12 +13,9 @@ export default function index(){
             <title>SnapGrid</title>
           </Helmet>
         )}
-      <Text>Hello Guys</Text>
-      <Text>Hello world</Text>
-
-      <Text>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis mollitia ea, aliquam ex, perferendis repudiandae aperiam, nobis iusto unde perspiciatis debitis minima. Voluptatibus iusto aliquid quia mollitia sequi odio architecto.</Text>
-
-      <Text>This is for testing</Text>
+      
+      <ButtonComponents label="Test button" onPress={()=>function(){}} />
+      <InputComponents label="Test label" placeholder_text={"test placeholder"} />
     </SafeAreaView>
   )
 }
