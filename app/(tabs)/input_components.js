@@ -3,8 +3,8 @@ import { View, Text, TextInput, StyleSheet } from "react-native"
 
 const Input_components = props =>{
     return (
-        <View>
-            <Text>{props.input_label}</Text>
+        <View style={{flexDirection: "column", gap: 6}}>
+            <Text style={style.input_label}>{props.label}</Text>
             <TextInput 
                 style={style.input_body}
                 placeholder={props.placeholder_text}
@@ -14,6 +14,10 @@ const Input_components = props =>{
 }
 
 const style = StyleSheet.create({
+    input_label: {
+        textAlign: "center"
+    },
+
     input_body: {
         flex: 1,
         backgroundColor: "white",

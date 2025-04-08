@@ -13,7 +13,7 @@ export default function index(){
           </Helmet>
         )}
 
-        <Input_components placeholder_text="this is a placeholder" input_label="this is input label"/>
+        <Input_components placeholder_text="this is a placeholder" label="this is input label"/>
       
     </SafeAreaView>
   )
