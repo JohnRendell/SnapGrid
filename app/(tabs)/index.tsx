@@ -12,6 +12,7 @@ export default function index(){
           </Helmet>
         )}
       <Text>Hello Guys</Text>
+      <Text>Hello world</Text>
     </SafeAreaView>
   )
 }
