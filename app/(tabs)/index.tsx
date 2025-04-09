@@ -35,8 +35,6 @@ export default function index() {
         </Helmet>
       )}
 
-            <Login_Page />
-
       {/* Logo Image */}
       <Image
         source={require("./Images/Logo.png")}
