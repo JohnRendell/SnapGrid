@@ -3,14 +3,14 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Input_components from "./Components/input_components";
 import { useNavigation } from '@react-navigation/native';
 
-const login_page = ()=>{
+const sign_in_page = ()=>{
     const navigation = useNavigation();
     return (
         <View style={{flex: 1, width: "100%", height: "100%", backgroundColor: "#4A90E2"}}>
             <View style={style.body_view}>
                 {/*Header*/}
                 <View style={{flexDirection: "row", alignContent: "center", alignItems: "center", padding: 10}}>
-                    <View style={{flex: 1}}><Text style={{textAlign: "center", fontSize: 40, fontWeight: "bold", color: "#001524", fontFamily: "Lexend-Deca"}}>Login</Text></View>
+                    <View style={{flex: 1}}><Text style={{textAlign: "center", fontSize: 40, fontWeight: "bold", color: "#001524", fontFamily: "Lexend-Deca"}}>Sign Up</Text></View>
 
                     {/*Close button*/}
                     <TouchableOpacity onPress={()=> navigation.navigate("landing_page")}>
@@ -22,10 +22,11 @@ const login_page = ()=>{
                 <View style={{flexDirection: "column", gap: 30, justifyContent: "center", padding: 20}}>
                     <Input_components label="Username" placeholder_text="Type your username..."/>
                     <Input_components label="Password" placeholder_text="Type your password..."/>
+                    <Input_components label="Confirm Password" placeholder_text="Re-type your password..."/>
                 </View>
 
                 <TouchableOpacity style={{width: "100%", height: "auto", position: "absolute", bottom: 10}}>
-                    <Text style={{textAlign: "center", fontSize: 15, textDecorationLine: "underline", fontFamily: "Lexend-Deca"}}>Proceed</Text>
+                    <Text style={{textAlign: "center", fontSize: 15, textDecorationLine: "underline", fontFamily: "Lexend-Deca"}}>Create Account</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -44,4 +45,4 @@ const style = StyleSheet.create({
     }
 })
 
-export default login_page;
+export default sign_in_page;
