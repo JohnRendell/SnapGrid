@@ -15,17 +15,21 @@ const Input_components = props =>{
 
 const style = StyleSheet.create({
     input_label: {
-        textAlign: "center"
+        textAlign: "center",
+        fontWeight: "bold",
+        fontSize: 15
     },
 
     input_body: {
         flex: 1,
-        backgroundColor: "white",
+        backgroundColor: "#D9D9D9",
         borderWidth: 1,
+        borderBottomWidth: 5,
         outline: "none",
         padding: 10,
         borderRadius: 20,
-        fontSize: 15
+        fontSize: 14,
+        textAlign: "center"
     }
 })
 export default Input_components;
