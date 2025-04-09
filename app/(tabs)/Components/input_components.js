@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native"
+import { View, Text, TextInput, StyleSheet } from "react-native";
+
 
 const Input_components = props =>{
     return (
@@ -17,19 +18,22 @@ const style = StyleSheet.create({
     input_label: {
         textAlign: "center",
         fontWeight: "bold",
+        fontFamily: "Lexend-Deca",
         fontSize: 15
     },
 
     input_body: {
-        flex: 1,
+        width: "100%",
+        height: 40,
         backgroundColor: "#D9D9D9",
         borderWidth: 1,
         borderBottomWidth: 5,
-        outline: "none",
+        outlineStyle: "none",
         padding: 10,
         borderRadius: 20,
         fontSize: 14,
-        textAlign: "center"
+        textAlign: "center",
+        fontFamily: "Lexend-Deca",
     }
 })
 export default Input_components;

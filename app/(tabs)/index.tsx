@@ -3,9 +3,30 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Text, Platform, Image, View, StyleSheet } from "react-native";
 import Helmet from "react-helmet";
 import ButtonComponents from "./Components/button_components";
-import InputComponents from "./Components/input_components";
+import Login_Page from "./login_page";
+
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+import {useEffect} from 'react';
+
+SplashScreen.preventAutoHideAsync();
 
 export default function index() {
+  const [loaded, error] = useFonts({
+    'Lexend-Deca': require('../../assets/fonts/Lexend Deca/static/LexendDeca-Regular.ttf'),
+  });
+
+  useEffect(() => {
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
+
+  if (!loaded && !error) {
+    return null;
+  }
+
+
   return (
     <SafeAreaView style={styles.container}>
       {Platform.OS === "web" && (
@@ -13,6 +34,8 @@ export default function index() {
           <title>SnapGrid</title>
         </Helmet>
       )}
+
+            <Login_Page />
 
       {/* Logo Image */}
       {/* <Image
