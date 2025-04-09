@@ -15,18 +15,18 @@ export default function index() {
       )}
 
       {/* Logo Image */}
-      {/* <Image
-        source={require("./assets/image.png")}
+      <Image
+        source={require("./Images/Logo.png")}
         style={styles.logo}
         resizeMode="contain"
-      /> */}
+      />
 
       {/* SnapGrid Text Image */}
-      {/* <Image
-        source={require("./assets/image.png")}
-        style={styles.logo}
+      <Image
+        source={require("./Images/TextLogo.png")}
+        style={styles.textlogo}
         resizeMode="contain"
-      /> */}
+      />
    
       {/* Buttons */}
       <ButtonComponents label="Login" onPress={() => {}} />
@@ -43,7 +43,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#4A90E2",
   },
   logo: {
-    width: 100,
+    width: 250,
+    height: 250,
+    marginBottom: 10,
+  },
+   textlogo: {
+    width: 250,
     height: 100,
     marginBottom: 10,
   },
