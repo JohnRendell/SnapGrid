@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, Dimensions } from 'react-native';
 
 const MyButton = ({ label, onPress, backgroundColor = '#D7FDF0', textColor = '#000' }) => {
   return (
@@ -14,20 +14,23 @@ const MyButton = ({ label, onPress, backgroundColor = '#D7FDF0', textColor = '#0
 
 const styles = StyleSheet.create({
   button: {
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 8,
+    backgroundColor: "#D9D9D9",
+    borderWidth: 1,
+    borderBottomWidth: 5,
+    outline: "none",
+    padding: 5,
+    borderRadius: 26,
+    fontSize: 14,
+    width: Dimensions.get('window').width - 60,
+    margin: 10,
+    alignSelf: 'center',
+    justifyContent: 'center',
     alignItems: 'center',
-    marginVertical: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
   },
   text: {
-    fontSize: 16,
+    fontSize: 40,
     fontWeight: '600',
+    textAlign: 'center',
   },
 });
 
