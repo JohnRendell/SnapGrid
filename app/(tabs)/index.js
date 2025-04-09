@@ -17,15 +17,6 @@ SplashScreen.preventAutoHideAsync();
 
 const Stack = createNativeStackNavigator();
 
-const linking = {
-  prefixes: ['http://localhost:8081'],
-  config: {
-    screens: {
-      Landing_Page: 'landing_page',
-    },
-  },
-};
-
 const Landing_Page = ()=>{
   const navigation = useNavigation();
   return (
