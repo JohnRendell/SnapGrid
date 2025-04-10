@@ -14,7 +14,7 @@ const login_page = ()=>{
 
                     {/*Close button*/}
                     <TouchableOpacity onPress={()=> navigation.navigate("landing_page")}>
-                        <View style={{width: 30, height: 30, backgroundColor: "red", borderRadius: "100%"}}></View>
+                        <View style={{width: 30, height: 30, backgroundColor: "red", borderWidth: 1, borderRadius: "100%"}}></View>
                     </TouchableOpacity>
                 </View>
 

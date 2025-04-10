@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Input_components from "./Components/input_components";
 import { useNavigation } from '@react-navigation/native';
 
-const sign_in_page = ()=>{
+const Sign_in_page = ()=>{
     const navigation = useNavigation();
     return (
         <View style={{flex: 1, width: "100%", height: "100%", backgroundColor: "#4A90E2"}}>
@@ -14,7 +14,7 @@ const sign_in_page = ()=>{
 
                     {/*Close button*/}
                     <TouchableOpacity onPress={()=> navigation.navigate("landing_page")}>
-                        <View style={{width: 30, height: 30, backgroundColor: "red", borderRadius: "100%"}}></View>
+                        <View style={{width: 30, height: 30, backgroundColor: "red", borderWidth: 1, borderRadius: "100%"}}></View>
                     </TouchableOpacity>
                 </View>
 
@@ -45,4 +45,4 @@ const style = StyleSheet.create({
     }
 })
 
-export default sign_in_page;
+export default Sign_in_page;
