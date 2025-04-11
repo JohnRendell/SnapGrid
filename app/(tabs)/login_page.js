@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Input_components from "./Components/input_components";
 import { useNavigation } from '@react-navigation/native';
+import MyButton from "./Components/button_components";
 
 const login_page = ()=>{
     const navigation = useNavigation();
@@ -9,24 +10,26 @@ const login_page = ()=>{
         <View style={{flex: 1, width: "100%", height: "100%", backgroundColor: "#4A90E2"}}>
             <View style={style.body_view}>
                 {/*Header*/}
-                <View style={{flexDirection: "row", alignContent: "center", alignItems: "center", padding: 10}}>
-                    <View style={{flex: 1}}><Text style={{textAlign: "center", fontSize: 40, fontWeight: "bold", color: "#001524", fontFamily: "Lexend-Deca"}}>Login</Text></View>
+                <Text style={{position: "absolute", top: 15, justifyContent: "center", alignSelf: "center", fontSize: 40, fontWeight: "bold", color: "#001524", fontFamily: "Lexend-Deca"}}>Login</Text>
 
-                    {/*Close button*/}
-                    <TouchableOpacity onPress={()=> navigation.navigate("landing_page")}>
-                        <View style={{width: 30, height: 30, backgroundColor: "red", borderWidth: 1, borderRadius: "100%"}}></View>
+                {/*Close button*/}
+                <TouchableOpacity onPress={()=> navigation.navigate("landing_page")}>
+                    <View style={{position: "absolute", top: 10, right: 10, width: 30, height: 30, backgroundColor: "red", borderWidth: 1, borderRadius: "100%"}}></View>
+                </TouchableOpacity>
+
+                {/*Contents*/}
+                <View style={{flexDirection: "column", gap: 40, flex: 1, width: "100%", alignSelf: "center", justifyContent: "center", padding: 20}}>
+                    <Input_components label="Username" placeholder_text="Type your username..."/>
+                    <Input_components label="Password" placeholder_text="Type your password..."/>
+
+                    <TouchableOpacity onPress={()=> navigation.navigate("sign_in_page")} style={{width: "100%", height: "auto"}}>
+                        <Text style={{textAlign: "center", fontSize: 15, textDecorationLine: "underline", fontFamily: "Lexend-Deca"}}>Create Account</Text>
                     </TouchableOpacity>
                 </View>
 
-                {/*Contents*/}
-                <View style={{flexDirection: "column", gap: 30, justifyContent: "center", padding: 20}}>
-                    <Input_components label="Username" placeholder_text="Type your username..."/>
-                    <Input_components label="Password" placeholder_text="Type your password..."/>
+                <View style={{width: "100%", height: "auto", position: "absolute", bottom: 10}}>
+                    <MyButton label="Proceed" backgroundColor="#47B129" textColor="white" textSize={15} width={"20%"} />
                 </View>
-
-                <TouchableOpacity style={{width: "100%", height: "auto", position: "absolute", bottom: 10}}>
-                    <Text style={{textAlign: "center", fontSize: 15, textDecorationLine: "underline", fontFamily: "Lexend-Deca"}}>Proceed</Text>
-                </TouchableOpacity>
             </View>
         </View>
     )

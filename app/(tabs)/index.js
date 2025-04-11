@@ -43,7 +43,6 @@ const Landing_Page = ()=>{
       
           {/* Buttons */}
           <ButtonComponents label="Login" onPress={()=>{navigation.navigate('login_page')}} />
-          <ButtonComponents label="Sign Up" onPress={()=>{navigation.navigate('sign_in_page')}} />
         </SafeAreaView>
   )
 }
