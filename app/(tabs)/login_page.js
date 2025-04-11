@@ -4,7 +4,7 @@ import Input_components from "./Components/input_components";
 import { useNavigation } from '@react-navigation/native';
 import MyButton from "./Components/button_components";
 
-const login_page = ()=>{
+const Login_page = ()=>{
     const navigation = useNavigation();
     return (
         <View style={{flex: 1, width: "100%", height: "100%", backgroundColor: "#4A90E2"}}>
@@ -47,4 +47,4 @@ const style = StyleSheet.create({
     }
 })
 
-export default login_page;
+export default Login_page;
