@@ -29,7 +29,7 @@ const Sign_in_page = ()=>{
                 </View>
 
                 <View style={{width: "100%", height: "auto", position: "absolute", bottom: 10}}>
-                    <MyButton label="Proceed" backgroundColor="#47B129" textColor="white" textSize={15} width={"20%"} />
+                    <MyButton onPress={()=> navigation.navigate("Home_screen")} label="Proceed" backgroundColor="#47B129" textColor="white" textSize={15} width={"20%"} />
                 </View>
             </View>
         </View>
