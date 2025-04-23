@@ -3,7 +3,7 @@ import { Image, View, StyleSheet } from "react-native";
 
 const Header_logo_components = ()=>{
     return (
-        <View style={{position: "absolute", top: 10, flexDirection: "row", alignItems: "center", alignSelf: "center", gap: 4 }}>
+        <View style={{margin: 10, flexDirection: "row", alignItems: "center", alignSelf: "center", gap: 4 }}>
             <Image style={styles.imageFormat} source={require("../Images/Logo.png")}/>
             <Image style={styles.textLogoFormat} source={require("../Images/TextLogo.png")}/>
         </View>
@@ -12,13 +12,13 @@ const Header_logo_components = ()=>{
 
 const styles = StyleSheet.create({
     imageFormat: {
-        width: 150,
-        height: 150
+        width: 60,
+        height: 60
     },
 
     textLogoFormat: {
-        width: 400,
-        height: 90
+        width: 200,
+        height: 50
     }
 })
 
