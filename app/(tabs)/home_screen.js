@@ -52,7 +52,8 @@ const Home_screen = ()=>{
 
             {/* Footer nav */}
 
-            <Navigation_components/>
+            <Navigation_components />
+            
         </SafeAreaView>
     )
 }
@@ -61,6 +62,7 @@ const styles = StyleSheet.create({
     body_view: {
         flex: 1,
         margin: 10,
+        marginBottom: 80,
         backgroundColor: "#D7FDF0",
         borderWidth: 2,
         borderRadius: 30,
