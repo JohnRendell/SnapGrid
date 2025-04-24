@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import React from "react";
+import { View, Text, StyleSheet, Image, TouchableOpacity, SafeAreaView } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import Navigation_components from "./Components/navigation_components";
 import { useNavigation } from "expo-router";
@@ -25,7 +25,7 @@ const Image_Viewer_Page = () =>{
     const profile = DummyData_User_Profile.find(data => userID == data.userID);
 
     return (
-        <View style={{ flex: 1, backgroundColor: "#4A90E2", padding: 10, gap: 10 }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: "#4A90E2", padding: 10, gap: 10 }}>
             {/* User profile */}
             <View style={styles.userProfileView}>
                 <View style={{ width: "100%", overflow: "hidden", justifyContent: "center", alignItems: "center", padding: 10}}>
@@ -60,7 +60,7 @@ const Image_Viewer_Page = () =>{
 
             {/*Footer nav */}
             <Navigation_components isHome={false} />
-        </View>
+        </SafeAreaView>
     )
 }
 
