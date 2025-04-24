@@ -48,12 +48,12 @@ const Home_screen = ()=>{
                     numColumns={2} 
                     contentContainerStyle={{ paddingHorizontal: 10, paddingVertical: 10, gap: 20 }}
                     showsHorizontalScrollIndicator={false}
+                    showsVerticalScrollIndicator={false}
                     estimatedItemSize={200}
                 />
             </View>
 
             {/* Footer nav */}
-
             <Navigation_components />
             
         </SafeAreaView>

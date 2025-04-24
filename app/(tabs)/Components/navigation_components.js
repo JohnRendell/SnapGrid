@@ -3,7 +3,7 @@ import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from 'expo-router';
 import User_profile from '../user_profile';
 
-const Navigation_components = ({isHome}) => {
+const Navigation_components = () => {
   const navigation = useNavigation();
   const [showPanel, setShowPanel] = useState(false);
 

@@ -25,6 +25,7 @@ const Image_Viewer_Page = () =>{
     const profile = DummyData_User_Profile.find(data => userID == data.userID);
 
     return (
+        <>
         <SafeAreaView style={{ flex: 1, backgroundColor: "#4A90E2", padding: 10, gap: 10 }}>
             {/* User profile */}
             <View style={styles.userProfileView}>
@@ -54,13 +55,15 @@ const Image_Viewer_Page = () =>{
                     numColumns={2} 
                     contentContainerStyle={{ paddingHorizontal: 10, paddingVertical: 10, gap: 20 }}
                     showsHorizontalScrollIndicator={false}
+                    showsVerticalScrollIndicator={false}
                     estimatedItemSize={200}
                 />
             </View>
-
-            {/*Footer nav */}
-            <Navigation_components isHome={false} />
         </SafeAreaView>
+
+        {/*Footer nav */}
+        <Navigation_components />
+        </>
     )
 }
 

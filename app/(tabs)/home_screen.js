@@ -1,9 +1,10 @@
 import React from "react";
-import { SafeAreaView, StyleSheet, View, Image, TouchableOpacity } from "react-native";
+import { SafeAreaView, StyleSheet, View, Image, TouchableOpacity, Text } from "react-native";
 import Header_logo_components from "./Components/header_logo_components";
 import { MasonryFlashList } from "@shopify/flash-list";
 import Navigation_components from "./Components/navigation_components";
 import { useNavigation } from "expo-router";
+import MyButton from "./Components/button_components";
 
 {/*Alisin pagka may backend na*/}
 import { DummyData_Home_Page } from "./dummyData (aalisin pagka may backend na)"
@@ -30,6 +31,14 @@ const Home_screen = ()=>{
 
             {/* Contents*/}
             <View style={styles.body_view}>
+                {/*sort*/}
+                <View style={{flexDirection: "row", alignContent: "center", alignSelf: "flex-end"}}>
+                    <View style={{backgroundColor: "#D7FDF0", padding: 5, borderWidth: 2, borderBottomWidth: 10, alignContent: "center",  justifyContent: "center" }}>
+                        <Text style={{fontFamily: "Lexend-Deca", fontSize: 12 }}>Sort by: </Text>
+                    </View>
+                    <TouchableOpacity style={{backgroundColor: "#D7FDF0", padding: 5, borderWidth: 2, borderBottomWidth: 10, alignContent: "center",  justifyContent: "center" }}><Text tyle={{fontFamily: "Lexend-Deca", fontSize: 12 }}>Ascending</Text></TouchableOpacity>
+                </View>
+
                 <MasonryFlashList 
                     data={DummyData_Home_Page} 
                     renderItem={({item}) => <ImageDisplay img={item.img} userID={item.userID} />} 
@@ -37,12 +46,13 @@ const Home_screen = ()=>{
                     numColumns={2} 
                     contentContainerStyle={{ paddingHorizontal: 10, paddingVertical: 10, gap: 20 }}
                     showsHorizontalScrollIndicator={false}
+                    showsVerticalScrollIndicator={false}
                     estimatedItemSize={200}
                 />
             </View>
 
             {/* Footer nav */}
-            <Navigation_components isHome={true} />
+            <Navigation_components />
             
         </SafeAreaView>
     )

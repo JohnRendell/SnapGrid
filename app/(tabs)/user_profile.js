@@ -69,6 +69,7 @@ const User_profile = ({ isOpen, isClose })=>{
 
                 {/**Buttons */}
                 <MyButton onPress={()=> navigate.navigate("User_Saved_Page") } label={"Your Saved Photos"} textSize={18} borderRadius={0} />
+                  
                 <MyButton onPress={()=> navigate.navigate("landing_page")} label={"Log out"} textSize={18} borderRadius={0} backgroundColor="red" />
               </SafeAreaView>
             </Animated.View>
