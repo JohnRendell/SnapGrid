@@ -1,13 +1,16 @@
 import React from 'react';
 import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { useNavigation } from 'expo-router';
 
 const Navigation_components = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.bottomNav}>
       <View style={styles.buttonBox}>
-        {/* <TouchableOpacity onPress={() => {}}> */}
+        <TouchableOpacity onPress={() => { navigation.navigate("Home_screen") }}>
           <Image source={require('../Images/home.png')} style={styles.buttonImage} />
-        {/* </TouchableOpacity> */}
+        </TouchableOpacity>
 
         {/* <TouchableOpacity onPress={() => {}}> */}
           <Image source={require('../Images/upload.png')} style={styles.buttonImage} />

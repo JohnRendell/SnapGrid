@@ -1,31 +1,22 @@
 import React from "react";
-import { SafeAreaView, StyleSheet, View, Image } from "react-native";
+import { SafeAreaView, StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import Header_logo_components from "./Components/header_logo_components";
 import { MasonryFlashList } from "@shopify/flash-list";
 import Navigation_components from "./Components/navigation_components";
+import { useNavigation } from "expo-router";
 
-const imageDataSample = [
-    { id: 1, img: require("./Images/shrek.png") },
-    { id: 2, img: require("./Images/shrek.png") },
-    { id: 3, img: require("./Images/shrek.png") },
-    { id: 4, img: require("./Images/shrek.png") },
-    { id: 5, img: require("./Images/shrek.png") },
-    { id: 6, img: require("./Images/shrek.png") },
-    { id: 7, img: require("./Images/shrek.png") },
-    { id: 8, img: require("./Images/shrek.png") },
-    { id: 9, img: require("./Images/shrek.png") },
-    { id: 10, img: require("./Images/shrek.png") },
-    { id: 11, img: require("./Images/shrek.png") },
-    { id: 12, img: require("./Images/shrek.png") }
-]
+{/*Alisin pagka may backend na*/}
+import { DummyData_Home_Page } from "./dummyData (aalisin pagka may backend na)"
 
-const ImageDisplay = ({img}) =>{
-    const randomHeight = Math.floor(Math.random() * 200) + 450;
+const ImageDisplay = ({img, userID}) =>{
+    const navigation = useNavigation();
+
+    const randomHeight = Math.floor(Math.random() * 50) + 450;
 
     return (
-        <View style={{flex: 1, margin: 10 }}>
+        <TouchableOpacity style={{flex: 1, margin: 10 }} onPress={()=> navigation.navigate("Image_Viewer_UserPage", { userID: userID }) }>
             <Image style={{borderRadius: 20, height: randomHeight }} source={img} resizeMode="cover" />
-        </View>
+        </TouchableOpacity>
     )
 }
 
@@ -40,8 +31,8 @@ const Home_screen = ()=>{
             {/* Contents*/}
             <View style={styles.body_view}>
                 <MasonryFlashList 
-                    data={imageDataSample} 
-                    renderItem={({item}) => <ImageDisplay img={item.img} />} 
+                    data={DummyData_Home_Page} 
+                    renderItem={({item}) => <ImageDisplay img={item.img} userID={item.userID} />} 
                     keyExtractor={item => item.id} 
                     numColumns={2} 
                     contentContainerStyle={{ paddingHorizontal: 10, paddingVertical: 10 }}
@@ -51,7 +42,6 @@ const Home_screen = ()=>{
             </View>
 
             {/* Footer nav */}
-
             <Navigation_components />
             
         </SafeAreaView>
