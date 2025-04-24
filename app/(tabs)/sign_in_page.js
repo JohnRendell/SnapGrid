@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from "react-native";
 import Input_components from "./Components/input_components";
 import { useNavigation } from '@react-navigation/native';
 import MyButton from "./Components/button_components";
@@ -7,7 +7,7 @@ import MyButton from "./Components/button_components";
 const Sign_in_page = ()=>{
     const navigation = useNavigation();
     return (
-        <View style={{flex: 1, width: "100%", height: "100%", backgroundColor: "#4A90E2"}}>
+        <SafeAreaView style={{flex: 1, width: "100%", height: "100%", backgroundColor: "#4A90E2"}}>
             <View style={style.body_view}>
                 {/*Header*/}
                 <Text style={{position: "absolute", top: 15, justifyContent: "center", alignSelf: "center", fontSize: 40, fontWeight: "bold", color: "#001524", fontFamily: "Lexend-Deca"}}>Sign Up</Text>
@@ -32,7 +32,7 @@ const Sign_in_page = ()=>{
                     <MyButton onPress={()=> navigation.navigate("Home_screen")} label="Proceed" backgroundColor="#47B129" textColor="white" textSize={15} width={"20%"} />
                 </View>
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 

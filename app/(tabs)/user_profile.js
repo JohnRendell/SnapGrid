@@ -1,5 +1,5 @@
 import React,{ useEffect, useRef } from "react";
-import { View, Image, StyleSheet, Text, TouchableOpacity, Animated } from "react-native";
+import { View, Image, StyleSheet, Text, TouchableOpacity, Animated, SafeAreaView } from "react-native";
 import { BlurView } from "expo-blur";
 import { useNavigation } from "expo-router";
 import MyButton from "./Components/button_components";
@@ -49,7 +49,7 @@ const User_profile = ({ isOpen, isClose })=>{
 
             {/*Profile Panel*/}
             <Animated.View style={[style.user_container, { transform: [{ translateY: slideAnim }], opacity: opacityAnim }]}>
-
+              <SafeAreaView>
                 {/*Profile */}
                 <View style={{ width: "100%", flexDirection: "row", gap: 10, alignItems: "center", justifyContent: "center" }}>
                     <Image style={style.user_profile} source={require("./Dummy_Images_(Aalisin pagka may backend na)/bruh.jpg")} resizeMode="cover" />
@@ -70,6 +70,7 @@ const User_profile = ({ isOpen, isClose })=>{
                 {/**Buttons */}
                 <MyButton onPress={()=> navigate.navigate("User_Saved_Page") } label={"Your Saved Photos"} textSize={18} borderRadius={0} />
                 <MyButton onPress={()=> navigate.navigate("landing_page")} label={"Log out"} textSize={18} borderRadius={0} backgroundColor="red" />
+              </SafeAreaView>
             </Animated.View>
         </BlurView>
     )
