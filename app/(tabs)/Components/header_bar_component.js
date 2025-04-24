@@ -1,14 +1,14 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
 
-const MyButton = ({ label, onPress, backgroundColor = '#D7FDF0', textColor = '#000', textSize = 40, width = Dimensions.get('window').width - 60, borderRadius = 26}) => {
+const Header = ({ label, onPress, backgroundColor = '#D7FDF0', textColor = '#000', textSize = 40, width = Dimensions.get('window').width - 60, borderRadius = 26}) => {
   return (
-    <TouchableOpacity
+    <View
       style={[styles.button, { backgroundColor, width, borderRadius }]}
       onPress={onPress}
     >
       <Text style={[styles.text, { color: textColor, fontSize: textSize }]}>{label}</Text>
-    </TouchableOpacity>
+    </View>
   );
 };
 
@@ -31,4 +31,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MyButton;
+export default Header;
