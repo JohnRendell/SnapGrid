@@ -7,6 +7,7 @@ import Login_Page from "./login_page";
 import Sign_in_Page from "./sign_in_page";
 import Home_screen from "./home_screen";
 import Image_Viewer_Page from "./image_viewer_page";
+import User_saved_page from "./user_saved_page";
 
 import { useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -72,6 +73,7 @@ export default function index() {
       <Stack.Screen name="sign_in_page" component={Sign_in_Page} />
       <Stack.Screen name="Home_screen" component={Home_screen} />
       <Stack.Screen name="Image_Viewer_UserPage" component={Image_Viewer_Page} />
+      <Stack.Screen name="User_Saved_Page" component={User_saved_page} />
     </Stack.Navigator>
   );
 }

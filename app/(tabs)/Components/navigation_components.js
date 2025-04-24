@@ -16,9 +16,9 @@ const Navigation_components = () => {
           <Image source={require('../Images/upload.png')} style={styles.buttonImage} />
         {/* </TouchableOpacity> */}
 
-        {/* <TouchableOpacity onPress={() => {}}> */}
+        <TouchableOpacity onPress={() => { navigation.navigate("User_Saved_Page") }}>
           <Image source={require('../Images/profile.png')} style={styles.buttonImage} />
-        {/* </TouchableOpacity> */}
+        </TouchableOpacity>
       </View>
     </View>
   );

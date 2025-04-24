@@ -1,10 +1,10 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, Dimensions } from 'react-native';
 
-const MyButton = ({ label, onPress, backgroundColor = '#D7FDF0', textColor = '#000', textSize = 40, width = Dimensions.get('window').width - 60, borderRadius = 26}) => {
+const MyButton = ({ label, onPress, backgroundColor = '#D7FDF0', textColor = '#000', textSize = 40, width = Dimensions.get('window').width - 60, borderRadius = 26 ,margin= 10,}) => {
   return (
     <TouchableOpacity
-      style={[styles.button, { backgroundColor, width, borderRadius }]}
+      style={[styles.button, { backgroundColor, width, borderRadius,margin }]}
       onPress={onPress}
     >
       <Text style={[styles.text, { color: textColor, fontSize: textSize }]}>{label}</Text>
@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
     outlineStyle: "none",
     padding: 5,
     height: "auto",
-    margin: 10,
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',

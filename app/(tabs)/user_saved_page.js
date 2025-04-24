@@ -3,21 +3,11 @@ import { SafeAreaView, StyleSheet, View, Image } from "react-native";
 import Header_logo_components from "./Components/header_logo_components";
 import { MasonryFlashList } from "@shopify/flash-list";
 import Navigation_components from "./Components/navigation_components";
+import Header_bar_component from "./Components/header_bar_component";
+import ButtonComponents from "./Components/button_components";
 
-const imageDataSample = [
-    { id: 1, img: require("./Images/shrek.png") },
-    { id: 2, img: require("./Images/shrek.png") },
-    { id: 3, img: require("./Images/shrek.png") },
-    { id: 4, img: require("./Images/shrek.png") },
-    { id: 5, img: require("./Images/shrek.png") },
-    { id: 6, img: require("./Images/shrek.png") },
-    { id: 7, img: require("./Images/shrek.png") },
-    { id: 8, img: require("./Images/shrek.png") },
-    { id: 9, img: require("./Images/shrek.png") },
-    { id: 10, img: require("./Images/shrek.png") },
-    { id: 11, img: require("./Images/shrek.png") },
-    { id: 12, img: require("./Images/shrek.png") }
-]
+{/*Alisin pagka may backend na*/}
+import { DummyData_Home_Page } from "./dummyData (aalisin pagka may backend na)"
 
 const ImageDisplay = ({img}) =>{
     const randomHeight = Math.floor(Math.random() * 200) + 450;
@@ -35,12 +25,21 @@ const Home_screen = ()=>{
         <SafeAreaView style={{flex: 1, width: "100%", height: "100%", backgroundColor: "#4A90E2" }}>
 
             {/* Logo on top */}
-            <Header_logo_components />
+            <Header_logo_components/>
+
+            {/* Header bar */}
+            <Header_bar_component label="Your Saved Photos" textSize={26} width="85%" borderRadius={6} />
+
+            <View style={{ flexDirection: 'row', justifyContent: 'space-around'}}>
+                <ButtonComponents label="FAVORITES" textSize={13} width="35%" borderRadius={6} margin={0} />
+                <ButtonComponents label="POSTED BY YOU" textSize={13} width="35%" borderRadius={6} margin={0}/>
+            </View>
+
 
             {/* Contents*/}
             <View style={styles.body_view}>
                 <MasonryFlashList 
-                    data={imageDataSample} 
+                    data={DummyData_Home_Page} 
                     renderItem={({item}) => <ImageDisplay img={item.img} />} 
                     keyExtractor={item => item.id} 
                     numColumns={2} 
@@ -69,6 +68,8 @@ const styles = StyleSheet.create({
         borderColor: "#001524",
         padding: 10
     },
+
+
 })
 
 export default Home_screen;
