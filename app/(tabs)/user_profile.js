@@ -1,0 +1,100 @@
+import React,{ useEffect, useRef } from "react";
+import { View, Image, StyleSheet, Text, TouchableOpacity, Animated } from "react-native";
+import { BlurView } from "expo-blur";
+import { useNavigation } from "expo-router";
+import MyButton from "./Components/button_components";
+import { Dimensions } from "react-native";
+
+const User_profile = ({ isOpen, isClose })=>{
+    const navigate = useNavigation();
+    const screenHeight = parseInt(Dimensions.get("window").height);
+    
+    const slideAnim = useRef(new Animated.Value(screenHeight)).current;
+    const opacityAnim = useRef(new Animated.Value(0)).current;
+
+     useEffect(() => {
+    if (isOpen) {
+      Animated.parallel([
+        Animated.timing(slideAnim, {
+          toValue: screenHeight - 280, // Position near bottom
+          duration: 300,
+          useNativeDriver: true,
+        }),
+        Animated.timing(opacityAnim, {
+          toValue: 1,
+          duration: 300,
+          useNativeDriver: true,
+        }),
+      ]).start();
+    } else {
+      Animated.parallel([
+        Animated.timing(slideAnim, {
+          toValue: screenHeight, // Slide out of screen
+          duration: 300,
+          useNativeDriver: true,
+        }),
+        Animated.timing(opacityAnim, {
+          toValue: 0,
+          duration: 200,
+          useNativeDriver: true,
+        }),
+      ]).start();
+    }
+  }, [isOpen]);
+
+    return (
+        <BlurView intensity={200} tint="dark" style={style.user_view}>
+            {/*Clickable outside to close the panel*/}
+            <TouchableOpacity style={{flex: 1, backgroundColor: "transparent"}} onPress={isClose}/>
+
+            {/*Profile Panel*/}
+            <Animated.View style={[style.user_container, { transform: [{ translateY: slideAnim }], opacity: opacityAnim }]}>
+
+                {/*Profile */}
+                <View style={{ width: "100%", flexDirection: "row", gap: 10, alignItems: "center", justifyContent: "center" }}>
+                    <Image style={style.user_profile} source={require("./Dummy_Images_(Aalisin pagka may backend na)/bruh.jpg")} resizeMode="cover" />
+
+                    <View style={{ flexGrow: 1, justifyContent: "center", gap: 10, alignItems: "center", padding: 10 }}>
+                        {/*User name tag*/}
+                        <View style={{backgroundColor: "#D7FDF0", padding: 10, borderWidth: 2, borderBottomWidth: 10 }}>
+                            <Text style={{fontFamily: "Lexend-Deca", fontSize: 15 }}>staticUsername_Placeholder34</Text>
+                        </View>
+
+                        {/*Edit profile button*/}
+                        <View style={{alignSelf: "flex-start"}}>
+                            <MyButton width={"40%"} label={"Edit Profile"} textSize={12} borderRadius={0} />
+                        </View>
+                    </View>
+                </View>
+
+                {/**Buttons */}
+                <MyButton onPress={()=> navigate.navigate("User_Saved_Page") } label={"Your Saved Photos"} textSize={18} borderRadius={0} />
+                <MyButton onPress={()=> navigate.navigate("landing_page")} label={"Log out"} textSize={18} borderRadius={0} backgroundColor="red" />
+            </Animated.View>
+        </BlurView>
+    )
+}
+
+const style = StyleSheet.create({
+    user_view:{
+        width: "100%",
+        height: "100%",
+        position: "absolute"
+    },
+
+    user_container: {
+        position: "absolute",
+        width: "100%",
+        height: "40%", 
+        backgroundColor: "#4A90E2", 
+        padding: 10,
+    },
+
+    user_profile: {
+        width: 100,
+        height: 100,
+        borderRadius: 100
+    }
+})
+
+export default User_profile;

@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from 'expo-router';
+import User_profile from '../user_profile';
 
-const Navigation_components = () => {
+const Navigation_components = ({isHome}) => {
   const navigation = useNavigation();
+  const [showPanel, setShowPanel] = useState(false);
 
   return (
+    <>
     <View style={styles.bottomNav}>
       <View style={styles.buttonBox}>
         <TouchableOpacity onPress={() => { navigation.navigate("Home_screen") }}>
@@ -16,11 +19,20 @@ const Navigation_components = () => {
           <Image source={require('../Images/upload.png')} style={styles.buttonImage} />
         {/* </TouchableOpacity> */}
 
-        <TouchableOpacity onPress={() => { navigation.navigate("User_Saved_Page") }}>
+        <TouchableOpacity onPress={() => {setShowPanel(true)}}>
           <Image source={require('../Images/profile.png')} style={styles.buttonImage} />
         </TouchableOpacity>
       </View>
     </View>
+
+      {showPanel && (
+        <User_profile 
+          isOpen={showPanel}
+          isClose={()=>setShowPanel(false)}
+        />
+      )}
+
+    </>
   );
 };
 

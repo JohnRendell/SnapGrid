@@ -1,21 +1,24 @@
 import React from "react";
-import { SafeAreaView, StyleSheet, View, Image } from "react-native";
+import { SafeAreaView, StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import Header_logo_components from "./Components/header_logo_components";
 import { MasonryFlashList } from "@shopify/flash-list";
 import Navigation_components from "./Components/navigation_components";
 import Header_bar_component from "./Components/header_bar_component";
 import ButtonComponents from "./Components/button_components";
+import { useNavigation } from "expo-router";
 
 {/*Alisin pagka may backend na*/}
 import { DummyData_Home_Page } from "./dummyData (aalisin pagka may backend na)"
 
-const ImageDisplay = ({img}) =>{
+const ImageDisplay = ({img, userID}) =>{
+    const navigation = useNavigation();
+
     const randomHeight = Math.floor(Math.random() * 200) + 450;
 
     return (
-        <View style={{flex: 1, margin: 10 }}>
-            <Image style={{borderRadius: 20, height: randomHeight }} source={img} resizeMode="cover" />
-        </View>
+        <TouchableOpacity style={{ alignItems: "center", padding: 5 }} onPress={()=> navigation.navigate("Image_Viewer_UserPage", { userID: userID }) }>
+            <Image style={{ borderRadius: 20, width: "100%", height: randomHeight }} source={img} resizeMode="cover" />
+        </TouchableOpacity>
     )
 }
 
@@ -40,10 +43,10 @@ const Home_screen = ()=>{
             <View style={styles.body_view}>
                 <MasonryFlashList 
                     data={DummyData_Home_Page} 
-                    renderItem={({item}) => <ImageDisplay img={item.img} />} 
+                    renderItem={({item}) => <ImageDisplay img={item.img} userID={item.userID} />} 
                     keyExtractor={item => item.id} 
                     numColumns={2} 
-                    contentContainerStyle={{ paddingHorizontal: 10, paddingVertical: 10 }}
+                    contentContainerStyle={{ paddingHorizontal: 10, paddingVertical: 10, gap: 20 }}
                     showsHorizontalScrollIndicator={false}
                     estimatedItemSize={200}
                 />

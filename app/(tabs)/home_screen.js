@@ -11,11 +11,11 @@ import { DummyData_Home_Page } from "./dummyData (aalisin pagka may backend na)"
 const ImageDisplay = ({img, userID}) =>{
     const navigation = useNavigation();
 
-    const randomHeight = Math.floor(Math.random() * 50) + 450;
+    const randomHeight = Math.floor(Math.random() * 200) + 450;
 
     return (
-        <TouchableOpacity style={{flex: 1, margin: 10 }} onPress={()=> navigation.navigate("Image_Viewer_UserPage", { userID: userID }) }>
-            <Image style={{borderRadius: 20, height: randomHeight }} source={img} resizeMode="cover" />
+        <TouchableOpacity style={{ alignItems: "center", padding: 5 }} onPress={()=> navigation.navigate("Image_Viewer_UserPage", { userID: userID }) }>
+            <Image style={{ borderRadius: 20, width: "100%", height: randomHeight }} source={img} resizeMode="cover" />
         </TouchableOpacity>
     )
 }
@@ -35,14 +35,14 @@ const Home_screen = ()=>{
                     renderItem={({item}) => <ImageDisplay img={item.img} userID={item.userID} />} 
                     keyExtractor={item => item.id} 
                     numColumns={2} 
-                    contentContainerStyle={{ paddingHorizontal: 10, paddingVertical: 10 }}
+                    contentContainerStyle={{ paddingHorizontal: 10, paddingVertical: 10, gap: 20 }}
                     showsHorizontalScrollIndicator={false}
                     estimatedItemSize={200}
                 />
             </View>
 
             {/* Footer nav */}
-            <Navigation_components />
+            <Navigation_components isHome={true} />
             
         </SafeAreaView>
     )
