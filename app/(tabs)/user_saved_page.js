@@ -1,11 +1,12 @@
 import React from "react";
-import { SafeAreaView, StyleSheet, View, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import Header_logo_components from "./Components/header_logo_components";
 import { MasonryFlashList } from "@shopify/flash-list";
 import Navigation_components from "./Components/navigation_components";
 import Header_bar_component from "./Components/header_bar_component";
 import ButtonComponents from "./Components/button_components";
 import { useNavigation } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 {/*Alisin pagka may backend na*/}
 import { DummyData_Home_Page } from "./dummyData (aalisin pagka may backend na)"
@@ -13,11 +14,9 @@ import { DummyData_Home_Page } from "./dummyData (aalisin pagka may backend na)"
 const ImageDisplay = ({img, userID}) =>{
     const navigation = useNavigation();
 
-    const randomHeight = Math.floor(Math.random() * 200) + 450;
-
     return (
-        <TouchableOpacity style={{ alignItems: "center", padding: 5 }} onPress={()=> navigation.navigate("Image_Viewer_UserPage", { userID: userID }) }>
-            <Image style={{ borderRadius: 20, width: "100%", height: randomHeight }} source={img} resizeMode="cover" />
+        <TouchableOpacity style={{ borderRadius: 5, margin: 5, alignItems: "center", justifyContent: "center", overflow: "hidden" }} onPress={()=> navigation.replace("Image_Viewer_UserPage", { userID: userID }) }>
+            <Image source={img} resizeMode="contain" />
         </TouchableOpacity>
     )
 }
@@ -46,7 +45,7 @@ const Home_screen = ()=>{
                     renderItem={({item}) => <ImageDisplay img={item.img} userID={item.userID} />} 
                     keyExtractor={item => item.id} 
                     numColumns={2} 
-                    contentContainerStyle={{ paddingHorizontal: 10, paddingVertical: 10, gap: 20 }}
+                    contentContainerStyle={{ paddingHorizontal: 10, paddingVertical: 10 }}
                     showsHorizontalScrollIndicator={false}
                     showsVerticalScrollIndicator={false}
                     estimatedItemSize={200}

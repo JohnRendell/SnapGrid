@@ -45,14 +45,14 @@ const Landing_Page = ()=>{
           />
       
           {/* Buttons */}
-          <ButtonComponents label="Login" onPress={()=>{navigation.navigate('login_page')}} />
+          <ButtonComponents label="Login" onPress={()=>{navigation.replace('login_page')}} />
         </SafeAreaView>
   )
 }
 
 export default function index() {
   const [loaded, error] = useFonts({
-    'Lexend-Deca': require('../../assets/fonts/Lexend Deca/static/LexendDeca-Regular.ttf'),
+    'Lexend-Deca': require('@/assets/fonts/Lexend Deca/static/LexendDeca-Regular.ttf'),
   });
 
   useEffect(() => {

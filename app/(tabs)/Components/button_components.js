@@ -15,6 +15,7 @@ const MyButton = ({ label, onPress, backgroundColor = '#D7FDF0', textColor = '#0
 const styles = StyleSheet.create({
   button: {
     backgroundColor: "#D9D9D9",
+    borderColor: "#001524",
     borderWidth: 1,
     borderBottomWidth: 5,
     outlineStyle: "none",
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    fontWeight: '600',
+    fontWeight: 600,
     textAlign: 'center',
     fontFamily: "Lexend-Deca"
   },

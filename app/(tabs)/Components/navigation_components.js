@@ -11,7 +11,7 @@ const Navigation_components = () => {
     <>
     <View style={styles.bottomNav}>
       <View style={styles.buttonBox}>
-        <TouchableOpacity onPress={() => { navigation.navigate("Home_screen") }}>
+        <TouchableOpacity onPress={() => { navigation.replace("Home_screen") }}>
           <Image source={require('../Images/home.png')} style={styles.buttonImage} />
         </TouchableOpacity>
 

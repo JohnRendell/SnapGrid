@@ -1,9 +1,10 @@
 import React,{ useEffect, useRef } from "react";
-import { View, Image, StyleSheet, Text, TouchableOpacity, Animated, SafeAreaView } from "react-native";
+import { View, Image, StyleSheet, Text, TouchableOpacity, Animated } from "react-native";
 import { BlurView } from "expo-blur";
 import { useNavigation } from "expo-router";
 import MyButton from "./Components/button_components";
 import { Dimensions } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const User_profile = ({ isOpen, isClose })=>{
     const navigate = useNavigation();
@@ -68,9 +69,9 @@ const User_profile = ({ isOpen, isClose })=>{
                 </View>
 
                 {/**Buttons */}
-                <MyButton onPress={()=> navigate.navigate("User_Saved_Page") } label={"Your Saved Photos"} textSize={18} borderRadius={0} />
+                <MyButton onPress={()=> navigate.replace("User_Saved_Page") } label={"Your Saved Photos"} textSize={18} borderRadius={0} />
                   
-                <MyButton onPress={()=> navigate.navigate("landing_page")} label={"Log out"} textSize={18} borderRadius={0} backgroundColor="red" />
+                <MyButton onPress={()=> navigate.replace("landing_page")} label={"Log out"} textSize={18} borderRadius={0} backgroundColor="red" />
               </SafeAreaView>
             </Animated.View>
         </BlurView>
