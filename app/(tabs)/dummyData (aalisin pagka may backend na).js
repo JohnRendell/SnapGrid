@@ -4,6 +4,7 @@ export const DummyData_Home_Page = [
         { id: 3, img: require("./Dummy_Images_(Aalisin pagka may backend na)/pou.png"), userID: 121 },
         { id: 4, img: require("./Dummy_Images_(Aalisin pagka may backend na)/Sandy.webp"), userID: 111 },
         { id: 5, img: require("./Dummy_Images_(Aalisin pagka may backend na)/bruh.jpg"), userID: 222 },
+        { id: 6, img: require("./Dummy_Images_(Aalisin pagka may backend na)/Bruh.webp"), userID: 696 },
     ]
 
 export const DummyData_User_Profile = [
@@ -12,4 +13,5 @@ export const DummyData_User_Profile = [
         { profile: require("./Dummy_Images_(Aalisin pagka may backend na)/pou.png"), userID: 121, username: "dummy3" },
         { profile: require("./Dummy_Images_(Aalisin pagka may backend na)/Sandy.webp"), userID: 111, username: "dummy4" },
         { profile: require("./Dummy_Images_(Aalisin pagka may backend na)/goku.png"), userID: 222, username: "dellPogi123" },
+        { profile: require("./Dummy_Images_(Aalisin pagka may backend na)/Bruh.webp"), userID: 696, username: "yeet111" },
     ]
