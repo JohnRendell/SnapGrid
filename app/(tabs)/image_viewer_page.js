@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity, Animated, Dimensions } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRoute } from "@react-navigation/native";
 import Navigation_components from "./Components/navigation_components";
@@ -9,11 +9,19 @@ import { MasonryFlashList } from "@shopify/flash-list";
 import { DummyData_User_Profile, DummyData_Home_Page } from "./dummyData (aalisin pagka may backend na)";
 
 const ImageDisplay = ({img, userID}) =>{
+   const [randomHeight, setRandomHeight] = useState(200); // default to 200
     const navigation = useNavigation();
 
+    useEffect(() => {
+        const min = 200;
+        const max = 400;
+        const height = Math.floor(Math.random() * (max - min + 1)) + min;
+        setRandomHeight(height);
+    }, []); 
+
     return (
-        <TouchableOpacity style={{ borderRadius: 5, margin: 5, alignItems: "center", justifyContent: "center", overflow: "hidden" }} onPress={()=> navigation.replace("Image_Viewer_UserPage", { userID: userID }) }>
-            <Image source={img} resizeMode="contain" />
+        <TouchableOpacity style={{ borderRadius: 5, flexGrow: 1, margin: 3, alignItems: "center", justifyContent: "center", overflow: "hidden" }} onPress={()=> navigation.replace("Image_Viewer_UserPage", { userID: userID }) }>
+            <Image source={img} resizeMode="cover" style={{height: randomHeight, aspectRatio: 1}} />
         </TouchableOpacity>
     )
 }
@@ -38,7 +46,7 @@ const Image_Viewer_Page = () =>{
                 estimatedItemSize={200}
                 ListHeaderComponent={
                     <View style={styles.previewImg}>
-                        <Image style={{ borderRadius: 20, width: 340, height: 300 }} source={postData.img} resizeMode="cover" />
+                        <Image style={{ borderRadius: 20, width: 340, height: 300 }} source={postData.img} resizeMode="contain" />
 
                         <View style={{alignSelf: 'stretch', flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
                             {/*User info*/}
@@ -79,8 +87,12 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        borderBottomStartRadius: 20,
-        borderBottomEndRadius: 20
+        borderLeftWidth: 0.5,
+        borderRightWidth: 0.5,
+        borderBottomWidth: 10,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
+        borderColor: "#4A90E2",
     },
 
     userProfileLogo: {
@@ -93,7 +105,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#D7FDF0",
         borderTopLeftRadius: 20,
-        borderTopRightRadius: 20
+        borderTopRightRadius: 20,
     },
 
     buttonImage: {
