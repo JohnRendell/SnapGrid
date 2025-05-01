@@ -8,6 +8,7 @@ import Sign_in_Page from "./sign_in_page";
 import Home_screen from "./home_screen";
 import Image_Viewer_Page from "./image_viewer_page";
 import User_saved_page from "./user_saved_page";
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -24,6 +25,16 @@ const Landing_Page = ()=>{
   const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.container}>
+
+         {/* Gradient background */}
+        <LinearGradient
+          colors={['#001524', '#D7FDF0']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 0, y: 2.5  }}
+          style={StyleSheet.absoluteFill} // Fills the whole screen behind content
+        />
+
+
           {Platform.OS === "web" && (
             <Helmet>
               <title>SnapGrid</title>
@@ -39,13 +50,20 @@ const Landing_Page = ()=>{
 
           {/* SnapGrid Text Image */}
           <Image
-            source={require("./Images/TextLogo.png")}
+            source={require("./Images/SnapGridTextLogo.png")}
             style={styles.textlogo}
             resizeMode="contain"
           />
       
           {/* Buttons */}
-          <ButtonComponents label="Login" onPress={()=>{navigation.replace('login_page')}} />
+      <ButtonComponents label="Login" textSize={20} width={170} borderRadius={13} onPress={() => { navigation.replace('login_page') }} />
+      
+      <ButtonComponents label="Sign up" textSize={20} width={170} borderRadius={13} onPress={() => { navigation.replace('sign_in_page') }} />
+      
+    
+
+     
+      
         </SafeAreaView>
   )
 }
@@ -81,18 +99,16 @@ export default function index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#4A90E2",
+    backgroundColor: "#001524",
   },
   logo: {
-    width: 250,
-    height: 250,
-    marginBottom: 10,
+    marginTop: 120,
+    width: 120,
+    height: 120,
   },
    textlogo: {
-    width: 250,
-    height: 100,
-    marginBottom: 10,
+    width: 300,
+    height: 200,
   },
 });
