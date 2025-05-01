@@ -10,8 +10,17 @@ const Navigation_components = () => {
 
   return (
     <>
-    <View style={styles.bottomNav}>
-      <View style={styles.buttonBox}>
+      <View style={styles.bottomNav}>
+       
+        <View style={styles.buttonBox}>
+            <LinearGradient
+                    colors={['#001524', '#D7FDF0']}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 0, y: 2.5  }}
+                    style={StyleSheet.absoluteFill} 
+          />
+            
+
         <TouchableOpacity onPress={() => { navigation.replace("Home_screen") }}>
           <Image source={require('../Images/home.png')} style={styles.buttonImage} />
         </TouchableOpacity>
@@ -22,9 +31,13 @@ const Navigation_components = () => {
 
         <TouchableOpacity onPress={() => {setShowPanel(true)}}>
           <Image source={require('../Images/profile.png')} style={styles.buttonImage} />
-        </TouchableOpacity>
+            </TouchableOpacity>
+            
+           
+          </View>
+          
       </View>
-    </View>
+      
 
       {showPanel && (
         <User_profile 
