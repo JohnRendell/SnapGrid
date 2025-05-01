@@ -31,7 +31,7 @@ const Landing_Page = ()=>{
           colors={['#001524', '#D7FDF0']}
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 2.5  }}
-          style={StyleSheet.absoluteFill} // Fills the whole screen behind content
+          style={StyleSheet.absoluteFill} 
         />
 
 

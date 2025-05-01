@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from 'expo-router';
 import User_profile from '../user_profile';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const Navigation_components = () => {
   const navigation = useNavigation();
