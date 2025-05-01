@@ -30,11 +30,11 @@ const Home_screen = ()=>{
             {/* Contents*/}
             <View style={styles.body_view}>
                 {/*sort*/}
-                <View style={{flexDirection: "row", alignContent: "center", alignSelf: "flex-end"}}>
+                <View style={{position: "absolute", bottom: 80, left: 20, zIndex: 10, flexDirection: "row", alignContent: "center", alignSelf: "flex-start"}}>
                     <View style={{backgroundColor: "#D7FDF0", padding: 5, borderWidth: 2, borderBottomWidth: 10, alignContent: "center",  justifyContent: "center" }}>
-                        <Text style={{fontFamily: "Lexend-Deca", fontSize: 12 }}>Sort by: </Text>
+                        <Text style={{fontFamily: "Lexend-Deca", fontSize: 15 }}>Sort by: </Text>
                     </View>
-                    <TouchableOpacity style={{backgroundColor: "#D7FDF0", padding: 5, borderWidth: 2, borderBottomWidth: 10, alignContent: "center",  justifyContent: "center" }}><Text tyle={{fontFamily: "Lexend-Deca", fontSize: 12 }}>Ascending</Text></TouchableOpacity>
+                    <TouchableOpacity style={{backgroundColor: "#D7FDF0", padding: 5, borderWidth: 2, borderBottomWidth: 10, alignContent: "center",  justifyContent: "center" }}><Text tyle={{fontFamily: "Lexend-Deca", fontSize: 15 }}>Ascending</Text></TouchableOpacity>
                 </View>
 
                 <MasonryFlashList 
@@ -59,13 +59,7 @@ const Home_screen = ()=>{
 const styles = StyleSheet.create({
     body_view: {
         flex: 1,
-        margin: 10,
-        marginBottom: 80,
         backgroundColor: "#D7FDF0",
-        borderWidth: 2,
-        borderRadius: 30,
-        borderColor: "#001524",
-        padding: 10
     },
 })
 
