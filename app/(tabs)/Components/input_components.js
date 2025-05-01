@@ -10,6 +10,7 @@ const Input_components = props =>{
                 placeholder={props.placeholder_text}
                 secureTextEntry={props.isPassword}
                 maxLength={props.maxLength}
+                placeholderTextColor="#9B9B9B"
             />
         </View>
     )
@@ -33,7 +34,8 @@ const style = StyleSheet.create({
         padding: 10,
         borderRadius: 20,
         fontSize: 14,
-        textAlign: "center",
+        textAlign: "left",
+        color: "black",
         fontFamily: "Lexend-Deca",
     }
 })
