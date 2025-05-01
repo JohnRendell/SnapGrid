@@ -24,7 +24,7 @@ const ImageDisplay = ({img, userID}) =>{
 
 const Home_screen = ()=>{
     return(
-        <SafeAreaView style={{flex: 1, width: "100%", height: "100%", backgroundColor: "#4A90E2" }}>
+        <SafeAreaView style={{flex: 1, width: "100%", height: "100%", backgroundColor: "#001524" }}>
 
             {/* Logo on top */}
             <Header_logo_components/>

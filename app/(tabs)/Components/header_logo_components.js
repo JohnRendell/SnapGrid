@@ -5,7 +5,7 @@ const Header_logo_components = ()=>{
     return (
         <View style={{margin: 10, flexDirection: "row", alignItems: "center", alignSelf: "center", gap: 4 }}>
             <Image style={styles.imageFormat} source={require("../Images/Logo.png")}/>
-            <Image style={styles.textLogoFormat} source={require("../Images/TextLogo.png")}/>
+            <Image style={styles.textLogoFormat} source={require("../Images/SnapGridTextLogo.png")}/>
         </View>
     )
 }
