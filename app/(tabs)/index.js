@@ -56,9 +56,9 @@ const Landing_Page = ()=>{
           />
       
           {/* Buttons */}
-      <ButtonComponents label="Login" textSize={20} width={170} borderRadius={13} onPress={() => { navigation.replace('login_page') }} />
+      <ButtonComponents label="Login" textSize={20} width={170} borderRadius={13} borderBottomWidth={0} onPress={() => { navigation.replace('login_page') }} />
       
-      <ButtonComponents label="Sign up" textSize={20} width={170} borderRadius={13} onPress={() => { navigation.replace('sign_in_page') }} />
+      <ButtonComponents label="Sign up" textSize={20} width={170} borderRadius={13} borderBottomWidth={0} onPress={() => { navigation.replace('sign_in_page') }} />
       
     
 

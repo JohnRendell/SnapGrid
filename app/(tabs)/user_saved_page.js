@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import Header_logo_components from "./Components/header_logo_components";
 import { MasonryFlashList } from "@shopify/flash-list";
@@ -12,11 +12,19 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { DummyData_Home_Page } from "./dummyData (aalisin pagka may backend na)"
 
 const ImageDisplay = ({img, userID}) =>{
+   const [randomHeight, setRandomHeight] = useState(200); // default to 200
     const navigation = useNavigation();
 
+    useEffect(() => {
+        const min = 200;
+        const max = 400;
+        const height = Math.floor(Math.random() * (max - min + 1)) + min;
+        setRandomHeight(height);
+    }, []); 
+
     return (
-        <TouchableOpacity style={{ borderRadius: 5, margin: 5, alignItems: "center", justifyContent: "center", overflow: "hidden" }} onPress={()=> navigation.replace("Image_Viewer_UserPage", { userID: userID }) }>
-            <Image source={img} resizeMode="contain" />
+        <TouchableOpacity style={{ borderRadius: 5, flexGrow: 1, margin: 3, alignItems: "center", justifyContent: "center", overflow: "hidden" }} onPress={()=> navigation.replace("Image_Viewer_UserPage", { userID: userID }) }>
+            <Image source={img} resizeMode="cover" style={{height: randomHeight, aspectRatio: 1}} />
         </TouchableOpacity>
     )
 }
@@ -62,13 +70,10 @@ const Home_screen = ()=>{
 const styles = StyleSheet.create({
     body_view: {
         flex: 1,
-        margin: 10,
-        marginBottom: 80,
+        marginTop: 10,
         backgroundColor: "#D7FDF0",
-        borderWidth: 2,
-        borderRadius: 30,
-        borderColor: "#001524",
-        padding: 10
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
     },
 
 

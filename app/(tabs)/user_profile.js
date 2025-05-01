@@ -17,7 +17,7 @@ const User_profile = ({ isOpen, isClose })=>{
     if (isOpen) {
       Animated.parallel([
         Animated.timing(slideAnim, {
-          toValue: screenHeight - 280, // Position near bottom
+          toValue: screenHeight - 840,
           duration: 300,
           useNativeDriver: true,
         }),
@@ -30,7 +30,7 @@ const User_profile = ({ isOpen, isClose })=>{
     } else {
       Animated.parallel([
         Animated.timing(slideAnim, {
-          toValue: screenHeight, // Slide out of screen
+          toValue: screenHeight,
           duration: 300,
           useNativeDriver: true,
         }),
@@ -44,9 +44,9 @@ const User_profile = ({ isOpen, isClose })=>{
   }, [isOpen]);
 
     return (
-        <BlurView intensity={200} tint="dark" style={style.user_view}>
+        <BlurView intensity={100} tint="dark" style={style.user_view}>
             {/*Clickable outside to close the panel*/}
-            <TouchableOpacity style={{flex: 1, backgroundColor: "transparent"}} onPress={isClose}/>
+            <TouchableOpacity style={{width: Dimensions.get("window").width, height: Dimensions.get("window").height, backgroundColor: "transparent"}} onPress={isClose}/>
 
             {/*Profile Panel*/}
             <Animated.View style={[style.user_container, { transform: [{ translateY: slideAnim }], opacity: opacityAnim }]}>
@@ -63,7 +63,7 @@ const User_profile = ({ isOpen, isClose })=>{
 
                         {/*Edit profile button*/}
                         <View style={{alignSelf: "flex-start"}}>
-                            <MyButton width={"40%"} label={"Edit Profile"} textSize={12} borderRadius={0} />
+                            <MyButton width={100} label={"Edit Profile"} textSize={12} borderRadius={0} />
                         </View>
                     </View>
                 </View>
@@ -71,7 +71,7 @@ const User_profile = ({ isOpen, isClose })=>{
                 {/**Buttons */}
                 <MyButton onPress={()=> navigate.replace("User_Saved_Page") } label={"Your Saved Photos"} textSize={18} borderRadius={0} />
                   
-                <MyButton onPress={()=> navigate.replace("landing_page")} label={"Log out"} textSize={18} borderRadius={0} backgroundColor="red" />
+                <MyButton width={200} onPress={()=> navigate.replace("landing_page")} label={"Log out"} textSize={18} borderRadius={0} backgroundColor="red" />
               </SafeAreaView>
             </Animated.View>
         </BlurView>
@@ -80,15 +80,17 @@ const User_profile = ({ isOpen, isClose })=>{
 
 const style = StyleSheet.create({
     user_view:{
-        width: "100%",
-        height: "100%",
-        position: "absolute"
+        width: Dimensions.get("window").width,
+        height: Dimensions.get("window").height,
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        position: "absolute",
+        zIndex: 10
     },
 
     user_container: {
-        position: "absolute",
-        width: "100%",
-        height: "40%", 
+        alignSelf: "stretch",
         backgroundColor: "#4A90E2", 
         padding: 10,
     },
