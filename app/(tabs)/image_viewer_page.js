@@ -5,7 +5,6 @@ import { useRoute } from "@react-navigation/native";
 import Navigation_components from "./Components/navigation_components";
 import { useNavigation } from "expo-router";
 import { MasonryFlashList } from "@shopify/flash-list";
-
 import { DummyData_User_Profile, DummyData_Home_Page } from "./dummyData (aalisin pagka may backend na)";
 
 const ImageDisplay = ({img, userID}) =>{
