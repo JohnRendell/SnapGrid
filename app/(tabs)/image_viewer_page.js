@@ -8,7 +8,7 @@ import { MasonryFlashList } from "@shopify/flash-list";
 import { DummyData_User_Profile, DummyData_Home_Page } from "./dummyData (aalisin pagka may backend na)";
 
 const ImageDisplay = ({img, userID}) =>{
-   const [randomHeight, setRandomHeight] = useState(200); // default to 200
+   const [randomHeight, setRandomHeight] = useState(200);
     const navigation = useNavigation();
 
     useEffect(() => {
