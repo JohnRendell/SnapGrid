@@ -1,4 +1,4 @@
-import React,{ useEffect, useRef } from "react";
+import React,{ useEffect, useRef, useState } from "react";
 import { View, Image, StyleSheet, Text, TouchableOpacity, Animated } from "react-native";
 import { BlurView } from "expo-blur";
 import { useNavigation } from "expo-router";
@@ -6,12 +6,36 @@ import MyButton from "./Components/button_components";
 import { Dimensions } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const getUser_credentials = async ()=>{
+  try {
+      const user = await AsyncStorage.getItem('user_login');
+      return JSON.parse(user);
+  } catch (e) {
+    console.error('Failed to load', e);
+    return null;
+  }
+}
+
 const User_profile = ({ isOpen, isClose })=>{
     const navigate = useNavigation();
     const screenHeight = parseInt(Dimensions.get("window").height);
     
     const slideAnim = useRef(new Animated.Value(screenHeight)).current;
     const opacityAnim = useRef(new Animated.Value(0)).current;
+
+    const [username, setUsername] = useState("")
+
+    useEffect(()=> {
+      const fetchUser = async () => {
+        const user = await getUser_credentials();
+        if (user) {
+          setUsername(user.username);
+        }
+      };
+      fetchUser();
+    }, [])
 
      useEffect(() => {
     if (isOpen) {
@@ -53,12 +77,12 @@ const User_profile = ({ isOpen, isClose })=>{
             <Animated.View style={[style.user_container, { transform: [{ translateY: slideAnim }], opacity: opacityAnim }]}>
                 {/*Profile */}
                 <View style={{ width: "100%", flexDirection: "row", gap: 10, alignItems: "center", justifyContent: "center" }}>
-                    <Image style={style.user_profile} source={require("./Dummy_Images_(Aalisin pagka may backend na)/bruh.jpg")} resizeMode="cover" />
+                    <Image style={style.user_profile} source={require("./Dummy_Images/Profile/man_suit_profile.jpg")} resizeMode="cover" />
 
                     <View style={{ flexGrow: 1, justifyContent: "center", gap: 10, alignItems: "center", padding: 10 }}>
                         {/*User name tag*/}
-                        <View style={{backgroundColor: "#D7FDF0", padding: 10, borderWidth: 2, borderBottomWidth: 10 }}>
-                            <Text style={{fontFamily: "Lexend-Deca", fontSize: 15 }}>staticUsername_Placeholder34</Text>
+                        <View style={{width: 200, backgroundColor: "#D7FDF0", padding: 10, borderWidth: 2, borderBottomWidth: 10 }}>
+                            <Text style={{textAlign: "center", fontFamily: "Lexend-Deca", fontSize: 15 }}>{username}</Text>
                         </View>
 
                         {/*Edit profile button*/}

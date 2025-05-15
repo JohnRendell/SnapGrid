@@ -5,17 +5,27 @@ import Input_components from "./Components/input_components";
 import { useNavigation } from '@react-navigation/native';
 import MyButton from "./Components/button_components";
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const Login_page = ()=>{
     const navigation = useNavigation();
     const [getUsername, setUsername] = useState("")
     const [getPassword, setPassword] = useState("")
 
-    const validate_login = ()=>{
+    const validate_login = async ()=>{
         if(!getUsername || !getPassword){
             alert("Fields must be filled.")
         }
         else{
-            navigation.replace("Home_screen")
+            try {
+               await AsyncStorage.setItem('user_login', JSON.stringify({ username: getUsername, password: getPassword}));
+
+                navigation.replace("Home_screen")
+            } 
+            
+            catch (e) {
+                console.error('Failed to save', e);
+            }
         }
     }
 
