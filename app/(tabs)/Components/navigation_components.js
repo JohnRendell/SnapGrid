@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from 'expo-router';
 import User_profile from '../user_profile';
+import Upload_modal from '../upload_modal';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const Navigation_components = () => {
   const navigation = useNavigation();
   const [showPanel, setShowPanel] = useState(false);
+  const [showGallery, setShowGallery] = useState(false);
 
   return (
     <>
@@ -27,13 +29,13 @@ const Navigation_components = () => {
           <Image source={require('../Images/home.png')} style={styles.buttonImage} />
         </TouchableOpacity>
 
-        {/* <TouchableOpacity onPress={() => {}}> */}
+        <TouchableOpacity onPress={() => {setShowGallery(true)}}>
           <Image source={require('../Images/upload.png')} style={styles.buttonImage} />
-        {/* </TouchableOpacity> */}
+        </TouchableOpacity>
 
         <TouchableOpacity onPress={() => {setShowPanel(true)}}>
           <Image source={require('../Images/profile.png')} style={styles.buttonImage} />
-            </TouchableOpacity>
+        </TouchableOpacity>
             
            
           </View>
@@ -45,6 +47,13 @@ const Navigation_components = () => {
         <User_profile 
           isOpen={showPanel}
           isClose={()=>setShowPanel(false)}
+        />
+      )}
+
+      {showGallery && (
+        <Upload_modal 
+          isOpen={showGallery}
+          isClose={()=>setShowGallery(false)}
         />
       )}
 
