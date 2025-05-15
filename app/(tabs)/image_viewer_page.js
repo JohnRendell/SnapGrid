@@ -30,6 +30,7 @@ const Image_Viewer_Page = () =>{
     const { userID } = route.params;
     const postData = DummyData_Home_Page.find(data => userID == data.userID)
     const profileData = DummyData_User_Profile.find(data => userID == data.userID);
+    const [isToggle, setToggle] = useState(false)
 
     return (
         <>
@@ -60,8 +61,8 @@ const Image_Viewer_Page = () =>{
                                     <Image style={styles.buttonImage} source={require("./Images/Download.png")}/>
                                 </TouchableOpacity>
 
-                                <TouchableOpacity onPress={()=>{}}>
-                                    <Image source={require('./Images/Favorite.png')} style={styles.buttonImage} />
+                                <TouchableOpacity onPress={()=>{setToggle(isToggle => !isToggle)}}>
+                                    <Image source={isToggle ? require('./Images/Favorite.png') : require('./Images/FavoriteToggle.png')} style={styles.buttonImage} />
                                 </TouchableOpacity>
                             </View>
                         </View>
