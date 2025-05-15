@@ -30,7 +30,7 @@ const Image_Viewer_Page = () =>{
     const { userID } = route.params;
     const postData = DummyData_Home_Page.find(data => userID == data.userID)
     const profileData = DummyData_User_Profile.find(data => userID == data.userID);
-    const [isToggle, setToggle] = useState(false)
+    const [isToggle, setToggle] = useState(true)
 
     return (
         <>

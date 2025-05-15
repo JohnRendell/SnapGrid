@@ -44,13 +44,13 @@ const User_profile = ({ isOpen, isClose })=>{
   }, [isOpen]);
 
     return (
-        <BlurView intensity={100} tint="dark" style={style.user_view}>
+        <SafeAreaView style={style.user_view}>
+          <BlurView intensity={100} tint="dark">
             {/*Clickable outside to close the panel*/}
             <TouchableOpacity style={{width: Dimensions.get("window").width, height: Dimensions.get("window").height, backgroundColor: "transparent"}} onPress={isClose}/>
 
             {/*Profile Panel*/}
             <Animated.View style={[style.user_container, { transform: [{ translateY: slideAnim }], opacity: opacityAnim }]}>
-              <SafeAreaView>
                 {/*Profile */}
                 <View style={{ width: "100%", flexDirection: "row", gap: 10, alignItems: "center", justifyContent: "center" }}>
                     <Image style={style.user_profile} source={require("./Dummy_Images_(Aalisin pagka may backend na)/bruh.jpg")} resizeMode="cover" />
@@ -72,9 +72,9 @@ const User_profile = ({ isOpen, isClose })=>{
                 <MyButton onPress={()=> navigate.replace("User_Saved_Page") } label={"Your Saved Photos"} textSize={18} borderRadius={0} />
                   
                 <MyButton width={200} onPress={()=> navigate.replace("landing_page")} label={"Log out"} textSize={18} borderRadius={0} backgroundColor="red" />
-              </SafeAreaView>
             </Animated.View>
         </BlurView>
+        </SafeAreaView>
     )
 }
 
