@@ -32,12 +32,22 @@ const Image_Viewer_Page = () =>{
     const profileData = DummyData_User_Profile.find(data => userID == data.userID);
     const [isToggle, setToggle] = useState(true)
 
+    const [getSort, setSort] = useState(false)
+    const [sortedData, setSortedData] = useState(DummyData_Home_Page)
+
+    const sort_page = (ascending) => {
+        const sorted = [...DummyData_Home_Page].sort((a, b) =>
+            ascending ? a.id - b.id : b.id - a.id
+        );
+            setSortedData(sorted);
+    };
+
     return (
         <>
         <SafeAreaView style={styles.contentView}>
             {/*Related Images */}
             <MasonryFlashList 
-                data={DummyData_Home_Page} 
+                data={sortedData} 
                 renderItem={({item}) => <ImageDisplay img={item.img} userID={item.userID} />} 
                 keyExtractor={item => item.id} 
                 numColumns={2} 
@@ -69,6 +79,23 @@ const Image_Viewer_Page = () =>{
                     </View>
                 }
             />
+
+            {/*sort*/}
+            <View style={{position: "absolute", bottom: 80, left: 20, zIndex: 10, flexDirection: "row", alignContent: "center", alignSelf: "flex-start"}}>
+                <View style={{backgroundColor: "#D7FDF0", padding: 5, borderWidth: 2, borderBottomWidth: 10, alignContent: "center",  justifyContent: "center" }}>
+                    <Text style={{fontFamily: "Lexend-Deca", fontSize: 15 }}>Sort by: </Text>
+                </View>
+                <TouchableOpacity 
+                    style={{backgroundColor: "#D7FDF0", padding: 5, borderWidth: 2, borderBottomWidth: 10, alignContent: "center",  justifyContent: "center" }} 
+                    onPress={()=>{
+                        const is_sort = !getSort;
+                        setSort(is_sort)
+                        sort_page(is_sort)
+                    }}
+                    activeOpacity={1}>
+                        <Text style={{fontFamily: "Lexend-Deca", fontSize: 15 }}>{getSort ? "Descending" : "Ascending"}</Text>
+                </TouchableOpacity>
+            </View>
         </SafeAreaView>
 
         {/*Footer nav */}

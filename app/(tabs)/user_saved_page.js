@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Image, TouchableOpacity, Text } from "react-native";
 import Header_logo_components from "./Components/header_logo_components";
 import { MasonryFlashList } from "@shopify/flash-list";
 import Navigation_components from "./Components/navigation_components";
@@ -31,6 +31,16 @@ const ImageDisplay = ({img, userID}) =>{
 
 
 const Home_screen = ()=>{
+    const [getSort, setSort] = useState(false)
+    const [sortedData, setSortedData] = useState(DummyData_Home_Page)
+
+    const sort_page = (ascending) => {
+        const sorted = [...DummyData_Home_Page].sort((a, b) =>
+            ascending ? a.id - b.id : b.id - a.id
+        );
+            setSortedData(sorted);
+    };
+
     return(
         <SafeAreaView style={{flex: 1, width: "100%", height: "100%", backgroundColor: "#001524" }}>
 
@@ -49,7 +59,7 @@ const Home_screen = ()=>{
             {/* Contents*/}
             <View style={styles.body_view}>
                 <MasonryFlashList 
-                    data={DummyData_Home_Page} 
+                    data={sortedData} 
                     renderItem={({item}) => <ImageDisplay img={item.img} userID={item.userID} />} 
                     keyExtractor={item => item.id} 
                     numColumns={2} 
@@ -58,6 +68,23 @@ const Home_screen = ()=>{
                     showsVerticalScrollIndicator={false}
                     estimatedItemSize={200}
                 />
+            </View>
+
+            {/*sort*/}
+            <View style={{position: "absolute", bottom: 80, left: 20, zIndex: 10, flexDirection: "row", alignContent: "center", alignSelf: "flex-start"}}>
+                <View style={{backgroundColor: "#D7FDF0", padding: 5, borderWidth: 2, borderBottomWidth: 10, alignContent: "center",  justifyContent: "center" }}>
+                    <Text style={{fontFamily: "Lexend-Deca", fontSize: 15 }}>Sort by: </Text>
+                </View>
+                <TouchableOpacity 
+                    style={{backgroundColor: "#D7FDF0", padding: 5, borderWidth: 2, borderBottomWidth: 10, alignContent: "center",  justifyContent: "center" }} 
+                    onPress={()=>{
+                        const is_sort = !getSort;
+                        setSort(is_sort)
+                        sort_page(is_sort)
+                    }}  
+                    activeOpacity={1}>
+                        <Text style={{fontFamily: "Lexend-Deca", fontSize: 15 }}>{getSort ? "Descending" : "Ascending"}</Text>
+                </TouchableOpacity>
             </View>
 
             {/* Footer nav */}

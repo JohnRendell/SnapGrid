@@ -10,7 +10,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { DummyData_Home_Page } from "./dummyData (aalisin pagka may backend na)"
 
 const ImageDisplay = ({img, userID}) =>{
-   const [randomHeight, setRandomHeight] = useState(200); // default to 200
+   const [randomHeight, setRandomHeight] = useState(200);
     const navigation = useNavigation();
 
     useEffect(() => {
@@ -29,6 +29,17 @@ const ImageDisplay = ({img, userID}) =>{
 
 
 const Home_screen = ()=>{
+    const [getSort, setSort] = useState(false)
+    const [sortedData, setSortedData] = useState(DummyData_Home_Page)
+
+    const sort_page = (ascending) => {
+        const sorted = [...DummyData_Home_Page].sort((a, b) =>
+          ascending ? a.id - b.id : b.id - a.id
+        );
+        setSortedData(sorted);
+      };
+      
+
     return(
         <SafeAreaView style={{flex: 1, width: "100%", height: "100%", backgroundColor: "#4A90E2" }}>
 
@@ -37,16 +48,26 @@ const Home_screen = ()=>{
 
             {/* Contents*/}
             <View style={styles.body_view}>
+
                 {/*sort*/}
                 <View style={{position: "absolute", bottom: 80, left: 20, zIndex: 10, flexDirection: "row", alignContent: "center", alignSelf: "flex-start"}}>
                     <View style={{backgroundColor: "#D7FDF0", padding: 5, borderWidth: 2, borderBottomWidth: 10, alignContent: "center",  justifyContent: "center" }}>
                         <Text style={{fontFamily: "Lexend-Deca", fontSize: 15 }}>Sort by: </Text>
                     </View>
-                    <TouchableOpacity style={{backgroundColor: "#D7FDF0", padding: 5, borderWidth: 2, borderBottomWidth: 10, alignContent: "center",  justifyContent: "center" }}><Text tyle={{fontFamily: "Lexend-Deca", fontSize: 15 }}>Ascending</Text></TouchableOpacity>
+                    <TouchableOpacity 
+                        style={{backgroundColor: "#D7FDF0", padding: 5, borderWidth: 2, borderBottomWidth: 10, alignContent: "center",  justifyContent: "center" }} 
+                        onPress={()=>{
+                            const is_sort = !getSort;
+                            setSort(is_sort)
+                            sort_page(is_sort)
+                        }} 
+                        activeOpacity={1}>
+                            <Text style={{fontFamily: "Lexend-Deca", fontSize: 15 }}>{getSort ? "Descending" : "Ascending"}</Text>
+                    </TouchableOpacity>
                 </View>
 
                 <MasonryFlashList 
-                    data={DummyData_Home_Page} 
+                    data={sortedData} 
                     renderItem={({item}) => <ImageDisplay img={item.img} userID={item.userID} />} 
                     keyExtractor={item => item.id} 
                     numColumns={2} 
