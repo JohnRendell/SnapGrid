@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from 'expo-router';
 import User_profile from '../user_profile';
-import Upload_modal from '../upload_modal';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import * as ImagePicker from 'expo-image-picker';
