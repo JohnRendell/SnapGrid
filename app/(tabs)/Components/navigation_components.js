@@ -5,6 +5,23 @@ import User_profile from '../user_profile';
 import Upload_modal from '../upload_modal';
 import { LinearGradient } from 'expo-linear-gradient';
 
+import * as ImagePicker from 'expo-image-picker';
+
+const openGallery = async () => {
+  // Ask permission
+  const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+  if (!permissionResult.granted) {
+    Alert.alert("Permission required", "Permission to access the gallery is needed.");
+    return;
+  }
+
+  // Open gallery — but ignore the result
+  await ImagePicker.launchImageLibraryAsync({
+    mediaTypes: ImagePicker.MediaTypeOptions.Images,
+    quality: 1,
+  });
+}
+
 const Navigation_components = () => {
   const navigation = useNavigation();
   const [showPanel, setShowPanel] = useState(false);
@@ -29,7 +46,7 @@ const Navigation_components = () => {
           <Image source={require('../Images/home.png')} style={styles.buttonImage} />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => {setShowGallery(true)}}>
+        <TouchableOpacity onPress={() => {openGallery()}}>
           <Image source={require('../Images/upload.png')} style={styles.buttonImage} />
         </TouchableOpacity>
 

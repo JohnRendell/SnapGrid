@@ -1,5 +1,5 @@
 import React,{ useState,useEffect, useRef } from "react";
-import { View, Image, StyleSheet, Text, TouchableOpacity, Animated } from "react-native";
+import { View, Image, StyleSheet, Text, TouchableOpacity, Animated, Button } from "react-native";
 import { BlurView } from "expo-blur";
 import { useNavigation } from "expo-router";
 import MyButton from "./Components/button_components";
@@ -76,7 +76,6 @@ const Upload_modal = ({ isOpen, isClose })=>{
                         
     
                         {/* Panu un ditu?? hjahahah */}
-
 
                         <Text style={{ fontFamily: "Lexend-Deca", fontSize: 20, fontWeight: "bold", color: "white" }}>All Photos</Text>
                      </View>
