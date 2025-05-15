@@ -11,6 +11,7 @@ const Input_components = props =>{
                 secureTextEntry={props.isPassword}
                 maxLength={props.maxLength}
                 placeholderTextColor="#9B9B9B"
+                onChangeText={props.text_value}
             />
         </View>
     )

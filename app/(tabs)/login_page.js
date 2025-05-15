@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Platform } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Input_components from "./Components/input_components";
@@ -7,6 +7,17 @@ import MyButton from "./Components/button_components";
 
 const Login_page = ()=>{
     const navigation = useNavigation();
+    const [getUsername, setUsername] = useState("")
+    const [getPassword, setPassword] = useState("")
+
+    const validate_login = ()=>{
+        if(!getUsername || !getPassword){
+            alert("Fields must be filled.")
+        }
+        else{
+            navigation.replace("Home_screen")
+        }
+    }
 
     return (
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{flex: 1, backgroundColor: "#001524"}}>
@@ -21,8 +32,8 @@ const Login_page = ()=>{
 
                 {/*Contents*/}
                 <View style={{flexDirection: "column", gap: 40, flex: 1, width: "100%", alignSelf: "center", justifyContent: "center", padding: 20}}>
-                    <Input_components label="Username" placeholder_text="Enter Username..." isPassword={false} maxLength={20}/>
-                    <Input_components label="Password" placeholder_text="Enter Password..." isPassword={true} maxLength={20}/>
+                    <Input_components label="Username" placeholder_text="Enter Username..." isPassword={false} maxLength={20} text_value={(text)=>setUsername(text)}/>
+                    <Input_components label="Password" placeholder_text="Enter Password..." isPassword={true} maxLength={20} text_value={(text)=>setPassword(text)}/>
 
                     <TouchableOpacity onPress={()=> navigation.replace("sign_in_page")} style={{width: "100%", height: "auto"}}>
                         <Text style={{textAlign: "center", fontSize: 15, textDecorationLine: "underline", fontFamily: "Lexend-Deca", color: "#6584FF", width: 200, alignSelf: "center"}}>Dont have an account yet? Sign Up here!</Text>
@@ -30,7 +41,7 @@ const Login_page = ()=>{
                 </View>
 
                 <View style={{width: "100%", height: "auto", position: "absolute", bottom: 10}}>
-                    <MyButton onPress={()=> navigation.replace("Home_screen") } label="Proceed" backgroundColor="#47B129" textColor="white" textSize={15} width={100} />
+                    <MyButton onPress={()=> validate_login() } label="Proceed" backgroundColor="#47B129" textColor="white" textSize={15} width={100} />
                 </View>
             </SafeAreaView>
         </KeyboardAvoidingView>
