@@ -9,7 +9,7 @@ import { useNavigation } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 {/*Alisin pagka may backend na*/}
-import { DummyData_Home_Page } from "./dummyData (aalisin pagka may backend na)"
+import { DummyData_Home_Page } from "./dummyData"
 
 const ImageDisplay = ({img, userID}) =>{
    const [randomHeight, setRandomHeight] = useState(200); // default to 200
@@ -34,9 +34,9 @@ const Home_screen = ()=>{
     const [getSort, setSort] = useState(false)
     const [sortedData, setSortedData] = useState(DummyData_Home_Page)
 
-    const sort_page = (ascending) => {
+    const sort_page = () => {
         const sorted = [...DummyData_Home_Page].sort((a, b) =>
-            ascending ? a.id - b.id : b.id - a.id
+            getSort ? a.id - b.id : b.id - a.id
         );
             setSortedData(sorted);
     };
@@ -78,9 +78,8 @@ const Home_screen = ()=>{
                 <TouchableOpacity 
                     style={{backgroundColor: "#D7FDF0", padding: 5, borderWidth: 2, borderBottomWidth: 10, alignContent: "center",  justifyContent: "center" }} 
                     onPress={()=>{
-                        const is_sort = !getSort;
-                        setSort(is_sort)
-                        sort_page(is_sort)
+                        setSort(!getSort)
+                        sort_page()
                     }}  
                     activeOpacity={1}>
                         <Text style={{fontFamily: "Lexend-Deca", fontSize: 15 }}>{getSort ? "Descending" : "Ascending"}</Text>

@@ -5,7 +5,7 @@ import { useRoute } from "@react-navigation/native";
 import Navigation_components from "./Components/navigation_components";
 import { useNavigation } from "expo-router";
 import { MasonryFlashList } from "@shopify/flash-list";
-import { DummyData_User_Profile, DummyData_Home_Page } from "./dummyData (aalisin pagka may backend na)";
+import { DummyData_User_Profile, DummyData_Home_Page } from "./dummyData";
 
 const ImageDisplay = ({img, userID}) =>{
    const [randomHeight, setRandomHeight] = useState(200);
@@ -35,9 +35,9 @@ const Image_Viewer_Page = () =>{
     const [getSort, setSort] = useState(false)
     const [sortedData, setSortedData] = useState(DummyData_Home_Page)
 
-    const sort_page = (ascending) => {
+    const sort_page = () => {
         const sorted = [...DummyData_Home_Page].sort((a, b) =>
-            ascending ? a.id - b.id : b.id - a.id
+            getSort ? a.id - b.id : b.id - a.id
         );
             setSortedData(sorted);
     };
@@ -88,9 +88,8 @@ const Image_Viewer_Page = () =>{
                 <TouchableOpacity 
                     style={{backgroundColor: "#D7FDF0", padding: 5, borderWidth: 2, borderBottomWidth: 10, alignContent: "center",  justifyContent: "center" }} 
                     onPress={()=>{
-                        const is_sort = !getSort;
-                        setSort(is_sort)
-                        sort_page(is_sort)
+                        setSort(!getSort)
+                        sort_page()
                     }}
                     activeOpacity={1}>
                         <Text style={{fontFamily: "Lexend-Deca", fontSize: 15 }}>{getSort ? "Descending" : "Ascending"}</Text>

@@ -3,7 +3,9 @@ import { View, Text, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Platfor
 import Input_components from "./Components/input_components";
 import { useNavigation } from '@react-navigation/native';
 import MyButton from "./Components/button_components";
-import { SafeAreaView } from "react-native-safe-area-context"
+import { SafeAreaView } from "react-native-safe-area-context";
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Sign_in_page = ()=>{
     const navigation = useNavigation();
@@ -12,7 +14,7 @@ const Sign_in_page = ()=>{
     const [getPassword, setPassword] = useState("")
     const [getConfirmPassword, setConfirmPassword] = useState("")
 
-    const validate_signin = ()=>{
+    const validate_signin = async ()=>{
         if(!getUsername || !getPassword || !getConfirmPassword){
             alert("Fields must be filled.")
         }
@@ -26,7 +28,16 @@ const Sign_in_page = ()=>{
             alert("Password and Confirm Password do not match.")
         }
         else{
-            navigation.replace("Home_screen")
+            try {
+               await AsyncStorage.setItem('user_login', JSON.stringify({ username: getUsername, password: getPassword}));
+
+                navigation.replace("Home_screen")
+               
+            } 
+            
+            catch (e) {
+                console.error('Failed to save', e);
+            }
         }
     }
 
