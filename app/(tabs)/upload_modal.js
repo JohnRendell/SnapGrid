@@ -6,7 +6,7 @@ import MyButton from "./Components/button_components";
 import { Dimensions } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { MasonryFlashList } from "@shopify/flash-list";
-import { DummyData_Home_Page } from "./dummyData (aalisin pagka may backend na)"
+import { DummyData_Home_Page } from "./dummyData"
 
 const Upload_modal = ({ isOpen, isClose })=>{
     const navigate = useNavigation();
